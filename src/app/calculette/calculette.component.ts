@@ -15,13 +15,19 @@ export class CalculetteComponent {
   public resultat: Number = 0;
 
   public operande1: FormControl
-    = new FormControl();
+    = new FormControl<Number>(0, [
+      Validators.min(1),
+      Validators.required
+  ]);
 
   public operateur: FormControl
-    = new FormControl();
+    = new FormControl<string|null>('+', Validators.required);
 
   public operande2: FormControl
-    = new FormControl();
+    = new FormControl<Number>(0,[
+      Validators.min(1),
+      Validators.required
+    ]);
 
   constructor() {
 
