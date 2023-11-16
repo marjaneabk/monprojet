@@ -6,6 +6,6 @@
   <option>*</option>
 </select></p>
 <p><input name="operande2" type="number" (change)="calcul()" [formControl]="operande2"></p>
-
+<p><input [disabled]="!calculatrice.valid" type="submit" value="Calculer"> </p>
 <p>Résultat</p>
 <p>{{resultat}}</p>
