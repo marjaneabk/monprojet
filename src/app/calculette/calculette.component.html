@@ -1,4 +1,4 @@
-<p><input name="operande1" type="text"></p>
+<p><input name="operande1" type="text" (change)="calcul()" [formControl]="operande1"></p>
 <p><select name="operateur" (change)="calcul()" [formControl]="operateur">
   <option>+</option>
   <option>-</option>
@@ -7,5 +7,5 @@
 </select></p>
 <p><input name="operande2" type="text" (change)="calcul()" [formControl]="operande2"></p>
 
-<p>Resultat</p>
+<p>Résultat</p>
 <p>{{resultat}}</p>

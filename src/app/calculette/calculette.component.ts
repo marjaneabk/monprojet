@@ -2,22 +2,20 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 
-
 @Component({
   selector: 'app-calculette',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './calculette.component.html',
   styleUrl: './calculette.component.css'
 })
 export class CalculetteComponent {
   public calculatrice: FormGroup;
 
-
-  public resultat: Number=0;
+  public resultat: Number = 0;
 
   public operande1: FormControl
-    = new FormControl('');
+    = new FormControl();
 
   public operateur: FormControl
     = new FormControl();
@@ -35,9 +33,13 @@ export class CalculetteComponent {
 
   }
 
-  calcul():void{
-    console.log("on calcule ...")
+  calcul(): void {
+
+    this.resultat = eval(
+      'this.operande1.value ' +
+      this.operateur.value +
+      ' this.operande2.value'
+    );
+
   }
-
-
 }
