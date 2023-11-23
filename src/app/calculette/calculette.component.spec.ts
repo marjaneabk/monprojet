@@ -8,8 +8,6 @@ const routes:Routes = [
   {path: 'calculette', component:ComposantRouteurComponent},
 ]
 
-
-
 describe('CalculetteComponent', () => {
   let component: CalculetteComponent;
   let fixture: ComponentFixture<CalculetteComponent>;

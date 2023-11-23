@@ -12,23 +12,24 @@ import {CompteurDeCalculComponent} from "../compteur-de-calcul/compteur-de-calcu
 })
 export class CalculetteComponent {
 
-  public total: number=0;
-
-
+@ViewChild('compteur') compteur!:CompteurDeCalculComponent;
   public calculatrice: FormGroup;
-
 
   public resultat: Number = 0;
 
+  public flagTropDeCalcul : boolean=false;
+
   calcul():void{
 
-    this.total++;
+    this.compteur.compte();
 
     this.resultat = eval(
       'this.operande1.value' +
       this.operateur.value +
       'this.operande2.value'
     )
+
+
   }
   public operande1: FormControl
     = new FormControl<Number>(0, [
@@ -55,5 +56,11 @@ export class CalculetteComponent {
 
   }
 
+
+  tropDeCalcul($event: boolean) {
+    if ($event == true){
+      this.flagTropDeCalcul = true;
+    }
+  }
 
 }
