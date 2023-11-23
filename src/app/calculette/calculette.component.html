@@ -1,11 +1,22 @@
+<form [formGroup]="calculatrice">
+
 <p><input name="operande1" type="number" (change)="calcul()" [formControl]="operande1"></p>
+
 <p><select name="operateur" (change)="calcul()" [formControl]="operateur">
   <option>+</option>
   <option>-</option>
   <option>/</option>
   <option>*</option>
 </select></p>
+
 <p><input name="operande2" type="number" (change)="calcul()" [formControl]="operande2"></p>
+
 <p><input [disabled]="!calculatrice.valid" type="submit" value="Calculer"> </p>
 <p>Résultat</p>
 <p>{{resultat}}</p>
+
+  <app-compteur-de-calcul [test]="total"></app-compteur-de-calcul>
+
+  <p>total</p>
+  <p>{{total}}</p>
+</form>

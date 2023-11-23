@@ -1,19 +1,35 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {CompteurDeCalculComponent} from "../compteur-de-calcul/compteur-de-calcul.component";
 
 @Component({
   selector: 'app-calculette',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, CompteurDeCalculComponent],
   templateUrl: './calculette.component.html',
   styleUrl: './calculette.component.css'
 })
 export class CalculetteComponent {
+
+  public total: number=0;
+
+
   public calculatrice: FormGroup;
+
 
   public resultat: Number = 0;
 
+  calcul():void{
+
+    this.total++;
+
+    this.resultat = eval(
+      'this.operande1.value' +
+      this.operateur.value +
+      'this.operande2.value'
+    )
+  }
   public operande1: FormControl
     = new FormControl<Number>(0, [
       Validators.min(1),
@@ -39,13 +55,5 @@ export class CalculetteComponent {
 
   }
 
-  calcul(): void {
 
-    this.resultat = eval(
-      'this.operande1.value ' +
-      this.operateur.value +
-      ' this.operande2.value'
-    );
-
-  }
 }
